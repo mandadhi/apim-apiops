@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "displayName": "json-type",
+    "secret": false,
+    "tags": [],
+    "value": "application/json"
+  }
+}

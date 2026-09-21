@@ -1,0 +1,18 @@
+{
+  "properties": {
+    "path": "wt",
+    "apiRevision": "1",
+    "authenticationSettings": {},
+    "displayName": "Weather",
+    "isCurrent": true,
+    "protocols": [
+      "https"
+    ],
+    "serviceUrl": "https://25h2txtb-5000.inc1.devtunnels.ms/",
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "subscriptionRequired": true
+  }
+}

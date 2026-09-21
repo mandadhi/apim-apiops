@@ -1,0 +1,36 @@
+{
+  "properties": {
+    "circuitBreaker": {
+      "rules": [
+        {
+          "acceptRetryAfter": true,
+          "failureCondition": {
+            "count": 2,
+            "errorReasons": [],
+            "interval": "PT3S",
+            "statusCodeRanges": [
+              {
+                "max": 599,
+                "min": 500
+              }
+            ]
+          },
+          "name": "Internal-service-error-breaker",
+          "tripDuration": "PT1M"
+        }
+      ]
+    },
+    "credentials": {
+      "header": {},
+      "query": {}
+    },
+    "description": "Backend Url for a Weather API",
+    "protocol": "http",
+    "tls": {
+      "validateCertificateChain": true,
+      "validateCertificateName": true
+    },
+    "type": "Single",
+    "url": "https://25h2txtb-5000.inc1.devtunnels.ms/"
+  }
+}

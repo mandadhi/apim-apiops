@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "scope": "/products/unlimited",
+    "allowTracing": false,
+    "ownerId": "/subscriptions/42f35baf-d966-4331-879d-dc05a88a5a37/resourceGroups/Demo_APIM/providers/Microsoft.ApiManagement/service/ci-cd-apim-instance/users/1",
+    "state": "active"
+  }
+}

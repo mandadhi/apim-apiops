@@ -1,0 +1,44 @@
+openapi: 3.0.1
+info:
+  title: Project
+  description: ''
+  version: '1.0'
+servers:
+  - url: https://ci-cd-apim-instance.azure-api.net/proj
+paths:
+  /project:
+    post:
+      summary: CreateProject
+      description: Creating a project with schema validation in the Apim
+      operationId: createproject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/proj-schema'
+            example:
+              name: wipro
+      responses:
+        '201':
+          description: Project Created
+          content:
+            application/json: { }
+components:
+  schemas:
+    proj-schema:
+      type: object
+      properties:
+        name:
+          type: string
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+  - apiKeyHeader: [ ]
+  - apiKeyQuery: [ ]

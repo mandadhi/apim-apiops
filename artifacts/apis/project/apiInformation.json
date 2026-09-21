@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "path": "proj",
+    "apiRevision": "1",
+    "authenticationSettings": {},
+    "description": "",
+    "displayName": "Project",
+    "isCurrent": true,
+    "protocols": [
+      "https"
+    ],
+    "serviceUrl": "https://25h2txtb-5000.inc1.devtunnels.ms/",
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "subscriptionRequired": true
+  }
+}
