@@ -30,7 +30,7 @@ jobs:
   Push-Changes-To-APIM-With-Commit-ID:
     if: (github.event.inputs.COMMIT_ID_CHOICE == 'publish-artifacts-in-last-commit' || github.event.inputs.COMMIT_ID_CHOICE == '')
     needs: get-commit
-    uses: ./.github/workflows/publisher-with-env.yaml
+    uses: ./.github/workflows/publisher-with-env.yml
     with:
       COMMIT_ID: ${{ needs.get-commit.outputs.commit_id }}
       API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: artifacts # change this to the artifacts folder
