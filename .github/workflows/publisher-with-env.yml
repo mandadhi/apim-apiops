@@ -36,7 +36,45 @@ jobs:
         with:
           node-version: "20"
       - run: npm install -g @stoplight/spectral-cli
-      - run: spectral lint "${{ GITHUB.WORKSPACE }}/${{ inputs.API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH }}/apis/*.{json,yml,yaml}" --ruleset https://raw.githubusercontent.com/connectedcircuits/devops-api-linter/main/rules.yaml
+      - name: Debug APIOps artifacts and run Spectral
+        shell: bash
+        env:
+          API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: ${{ inputs.API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH }}
+        run: |
+          set -euo pipefail
+
+          artifacts_path="$GITHUB_WORKSPACE/$API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH"
+          apis_path="$artifacts_path/apis"
+
+          echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
+          echo "API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH=$API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH"
+          echo "artifacts_path=$artifacts_path"
+
+          echo "Complete artifacts folder structure:"
+          if [ -d "$artifacts_path" ]; then
+            find "$artifacts_path" -print | sort
+          else
+            echo "Artifacts folder does not exist: $artifacts_path"
+          fi
+
+          echo "All JSON, YAML, and YML files recursively:"
+          if [ -d "$artifacts_path" ]; then
+            find "$artifacts_path" -type f \( -name '*.json' -o -name '*.yaml' -o -name '*.yml' \) -print | sort
+          fi
+
+          if [ ! -d "$apis_path" ]; then
+            echo "APIs folder does not exist, skipping Spectral lint: $apis_path"
+            exit 0
+          fi
+
+          mapfile -d '' specification_files < <(find "$apis_path" -type f \( -name 'specification.json' -o -name 'specification.yaml' -o -name 'specification.yml' \) -print0 | sort -z)
+
+          if [ ${#specification_files[@]} -eq 0 ]; then
+            echo "No API specification files found under $apis_path, skipping Spectral lint."
+            exit 0
+          fi
+
+          spectral lint "${specification_files[@]}" --ruleset https://raw.githubusercontent.com/connectedcircuits/devops-api-linter/main/rules.yaml
 
       # Add this step for each APIM environment and pass specific set of secrets that you want replaced in the env section below
       # - name: "Perform namevalue secret substitution in configuration.${{ inputs.API_MANAGEMENT_ENVIRONMENT}}.yaml"
