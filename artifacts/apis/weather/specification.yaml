@@ -1,6 +1,10 @@
 openapi: 3.0.1
 info:
   title: Weather
+  description: 'Weather Forecast API'
+  contact:
+    name: API Support
+    email: harshavardhanreddy1715@gmail.com
   version: '1.0'
 servers:
   - url: https://ci-cd-apim-instance.azure-api.net/wt
@@ -10,6 +14,7 @@ paths:
       tags:
         - WebApplication1
       summary: GetWeatherForecast
+      description: Retrieves the complete weather forecast collection.
       operationId: GetWeatherForecast
       responses:
         '200':
@@ -21,20 +26,22 @@ paths:
                 items:
                   $ref: '#/components/schemas/WeatherForecast'
               example:
-                - date: string
+                - date: '2026-09-21'
                   temperatureC: 0
                   summary: string
                   temperatureF: 0
-  '/weatherforecast/{id}':
+  '/weatherforecast/{weatherForecastId}':
     get:
       tags:
         - WebApplication1
-      summary: '/weatherforecast/{id} - GET'
-      operationId: get-weatherforecast-id
+      summary: '/weatherforecast/{weatherForecastId} - GET'
+      description: Retrieves a single weather forecast by its weather forecast identifier.
+      operationId: GetWeatherForecastByWeatherForecastId
       parameters:
-        - name: id
+        - name: weatherForecastId
           in: path
           required: true
+          description: Unique identifier of the weather forecast to retrieve.
           schema:
             type: string
       responses:
@@ -45,7 +52,8 @@ paths:
       tags:
         - WebApplication1
       summary: /error - GET
-      operationId: get-error
+      description: Exercises the API error response endpoint for diagnostics.
+      operationId: GetError
       responses:
         '200':
           description: OK
@@ -54,19 +62,13 @@ paths:
       tags:
         - WebApplication1
       summary: /serviceerror - GET
-      operationId: get-serviceerror
+      description: Exercises the service error response endpoint for diagnostics.
+      operationId: GetServiceError
       responses:
         '200':
           description: OK
 components:
   schemas:
-    Project:
-      type: object
-      properties:
-        name:
-          type: string
-          nullable: true
-      additionalProperties: false
     WeatherForecast:
       type: object
       properties:

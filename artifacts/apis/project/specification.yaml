@@ -1,16 +1,21 @@
 openapi: 3.0.1
 info:
+  contact:
+    name: API Support
+    email: harshavardhanreddy1715@gmail.com
   title: Project
-  description: ''
+  description: 'Just a Project API for managing projects'
   version: '1.0'
 servers:
   - url: https://ci-cd-apim-instance.azure-api.net/proj
 paths:
   /project:
     post:
+      tags:
+        - Project
       summary: CreateProject
       description: Creating a project with schema validation in the Apim
-      operationId: createproject
+      operationId: CreateProject
       requestBody:
         content:
           application/json:
@@ -42,3 +47,5 @@ components:
 security:
   - apiKeyHeader: [ ]
   - apiKeyQuery: [ ]
+tags:
+  - name: Project
