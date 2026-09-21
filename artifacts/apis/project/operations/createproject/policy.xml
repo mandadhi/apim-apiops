@@ -23,5 +23,26 @@
 	<!-- Handle exceptions and customize error responses  -->
 	<on-error>
 		<base />
+		<return-response>
+			<set-status code="@(context.Response.StatusCode)" />
+			<set-header name="Content-Type" exists-action="override">
+				<value>{{json-type}}</value>
+			</set-header>
+			<set-body>@{
+
+                    return JsonConvert.SerializeObject(new {
+                        status = context.Response.StatusCode,
+                        error = context.LastError.Reason,
+                        error_message = context.LastError.Message,
+                        api_name = context.Api.Name,
+                        scope = context.LastError.Scope,
+                        section = context.LastError.Section,
+                        resource = context.Request.OriginalUrl.ToString(),
+                        timezone_ist = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "India Standard Time").ToString("dd-MM-yyyy HH:mm:ss"),
+                        correlation = context.Request.Headers.GetValueOrDefault("x-correlation-id", context.RequestId.ToString())
+                    });
+
+                }</set-body>
+		</return-response>
 	</on-error>
 </policies>
