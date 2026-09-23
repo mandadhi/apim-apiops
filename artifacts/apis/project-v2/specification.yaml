@@ -2,9 +2,9 @@ openapi: 3.0.1
 info:
   title: Project
   description: ''
-  version: ''
+  version: v2
 servers:
-  - url: https://ci-cd-apim-instance.azure-api.net/proj
+  - url: https://ci-cd-apim-instance.azure-api.net/proj/v2
 paths:
   /project:
     post:
@@ -25,7 +25,6 @@ paths:
             application/json: { }
     get:
       summary: GetAllProjects
-      description: Getting all the Projects
       operationId: getallprojects
       responses:
         '200':

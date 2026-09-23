@@ -8,6 +8,9 @@
 	<!-- Throttle, authorize, validate, cache, or transform the requests -->
 	<inbound>
 		<base />
+		<validate-content unspecified-content-type-action="prevent" max-size="124000" size-exceeded-action="ignore" errors-variable-name="Validation_Error">
+			<content type="application/json" validate-as="json" action="prevent" schema-id="create-proj-schema" />
+		</validate-content>
 	</inbound>
 	<!-- Control if and how the requests are forwarded to services  -->
 	<backend>

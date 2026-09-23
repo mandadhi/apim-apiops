@@ -2,6 +2,7 @@
   "properties": {
     "path": "proj",
     "apiRevision": "1",
+    "apiVersion": "v2",
     "apiVersionSetId": "/apiVersionSets/6ab101b89ff0b1b572210482",
     "authenticationSettings": {},
     "description": "",

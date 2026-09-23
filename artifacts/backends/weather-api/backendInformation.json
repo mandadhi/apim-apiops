@@ -7,7 +7,7 @@
           "failureCondition": {
             "count": 2,
             "errorReasons": [],
-            "interval": "PT3S",
+            "interval": "PT30S",
             "statusCodeRanges": [
               {
                 "max": 599,

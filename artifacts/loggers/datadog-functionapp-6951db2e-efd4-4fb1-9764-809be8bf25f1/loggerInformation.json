@@ -1,0 +1,10 @@
+{
+  "properties": {
+    "loggerType": "applicationInsights",
+    "credentials": {
+      "instrumentationKey": "{{Logger-Credentials--6ab28da546346103c8c6e0c5}}"
+    },
+    "isBuffered": true,
+    "resourceId": "/subscriptions/42f35baf-d966-4331-879d-dc05a88a5a37/resourceGroups/Demo_APIM/providers/microsoft.insights/components/datadog-functionapp-6951db2e-efd4-4fb1-9764-809be8bf25f1"
+  }
+}
