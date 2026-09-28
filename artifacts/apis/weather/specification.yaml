@@ -29,11 +29,11 @@ paths:
                   temperatureC: 0
                   summary: string
                   temperatureF: 0
-  '/weatherforecast/{id}':
+  '/weatherforecast/{weatherForecastId}':
     get:
       tags:
         - WebApplication1
-      summary: '/weatherforecast/{id} - GET'
+      summary: '/weatherforecast/{weatherForecastId} - GET'
       operationId: GetWeatherForecastById
       description: Retrieves the weather forecast by ID.
       parameters:

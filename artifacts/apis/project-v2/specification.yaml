@@ -3,6 +3,8 @@ info:
   title: Project
   description: 'Project API for managing projects'
   version: '2.0.0'
+  contact:
+    name: API Support
 servers:
   - url: https://ci-cd-apim-instance.azure-api.net/proj/v2
 paths:
