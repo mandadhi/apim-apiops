@@ -1,8 +1,8 @@
 openapi: 3.0.1
 info:
   title: Project
-  description: ''
-  version: ''
+  description: 'Project API for managing projects'
+  version: '1.0.0'
 servers:
   - url: https://ci-cd-apim-instance.azure-api.net/proj
 paths:

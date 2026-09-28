@@ -1,7 +1,8 @@
 openapi: 3.0.1
 info:
   title: Weather
-  version: '1.0'
+  version: '1.0.0'
+  description: 'Weather API for retrieving weather forecasts'
 servers:
   - url: https://ci-cd-apim-instance.azure-api.net/wt
 paths:
@@ -11,6 +12,7 @@ paths:
         - WebApplication1
       summary: GetWeatherForecast
       operationId: GetWeatherForecast
+      description: Retrieves the weather forecast for the upcoming days.
       responses:
         '200':
           description: OK
@@ -30,7 +32,8 @@ paths:
       tags:
         - WebApplication1
       summary: '/weatherforecast/{id} - GET'
-      operationId: get-weatherforecast-id
+      operationId: GetWeatherForecastById
+      description: Retrieves the weather forecast by ID.
       parameters:
         - name: id
           in: path
@@ -45,7 +48,8 @@ paths:
       tags:
         - WebApplication1
       summary: /error - GET
-      operationId: get-error
+      operationId: GetError
+      description: Retrieves the error information.
       responses:
         '200':
           description: OK
@@ -54,7 +58,8 @@ paths:
       tags:
         - WebApplication1
       summary: /serviceerror - GET
-      operationId: get-serviceerror
+      operationId: GetServiceError
+      description: Retrieves the service error information.
       responses:
         '200':
           description: OK
