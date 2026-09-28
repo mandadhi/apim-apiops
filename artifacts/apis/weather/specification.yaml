@@ -37,7 +37,7 @@ paths:
       operationId: GetWeatherForecastById
       description: Retrieves the weather forecast by ID.
       parameters:
-        - name: id
+        - name: weatherForecastId
           in: path
           required: true
           schema:
