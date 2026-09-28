@@ -6,7 +6,7 @@ info:
   contact:
     name: API Support
 servers:
-  - url: https://ci-cd-apim-instance.azure-api.net/proj
+  - url: https://datadog-apim-instance.azure-api.net/proj
 paths:
   /project:
     post:

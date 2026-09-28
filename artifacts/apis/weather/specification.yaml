@@ -6,7 +6,7 @@ info:
     name: API Support
   description: 'Weather API for retrieving weather forecasts'
 servers:
-  - url: https://ci-cd-apim-instance.azure-api.net/wt
+  - url: https://datadog-apim-instance.azure-api.net/wt
 paths:
   /weatherforecast:
     get:
